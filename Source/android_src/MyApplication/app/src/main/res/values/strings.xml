@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_paperwork">Paperwork</string>
+    <string name="title_activity_clinic_info">ClinicInfo</string>
+    <string name="title_activity_bplog">BPLog</string>
+    <string name="clinic_location">google.navigation:q=UMKC,+Kansas City+Missouri</string>
 </resources>

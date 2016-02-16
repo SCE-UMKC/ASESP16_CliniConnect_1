@@ -23,11 +23,11 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_phone"
                 android:icon="@drawable/ic_phone_black_24dp"
                 android:title="Call Clinic" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_email"
                 android:icon="@drawable/ic_email_black_24dp"
                 android:title="Email Clinic" />
         </menu>

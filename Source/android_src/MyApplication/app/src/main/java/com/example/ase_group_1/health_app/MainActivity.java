@@ -1,17 +1,20 @@
 package com.example.ase_group_1.health_app;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,16 +84,40 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_paperwork) {
-            // PLACE NEW INTENTS HERE
+            Intent paperwork_intent = new Intent(this, Paperwork.class);
+            startActivity(paperwork_intent);
+
         } else if (id == R.id.nav_directions) {
 
+            Uri gmmIntentUri = Uri.parse("google.navigation:q=UMKC,+Kansas City+Missouri");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+
         } else if (id == R.id.nav_log) {
+            Intent log_intent = new Intent(this, BPLog.class);
+            startActivity(log_intent);
 
         } else if (id == R.id.nav_info) {
+            Intent info_intent = new Intent(this, ClinicInfo.class);
+            startActivity(info_intent);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_phone) {
+            String number = "1234567899";
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:" +number));
+            try {
+                startActivity(intent);
+            }catch(Exception e){
+                Log.d("PHONE PERM", "phone not available");
+            }
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_email) {
+
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto","ljm240@gmail.com", null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "CLINIC QUESTION");
+            startActivity(Intent.createChooser(emailIntent, "Send email..."));
 
         }
 
