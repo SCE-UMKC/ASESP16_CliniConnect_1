@@ -9,7 +9,7 @@
     <string name="title_activity_clinic_info">ClinicInfo</string>
     <string name="title_activity_bplog">BPLog</string>
     <string name="clinic_location">google.navigation:q=UMKC,+Kansas City+Missouri</string>
-    <string name="title_activity_login">Sign In</string>
+    <string name="title_activity_login">CliniConnect</string>
     <string name="permission_rationale">Contacts permissions are needed for providing email completions</string>
     <string name="error_invalid_password">This password is to short</string>
     <string name="error_field_required">This field is required</string>
