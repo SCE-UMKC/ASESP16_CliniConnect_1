@@ -3,6 +3,8 @@
     package="com.example.ase_group_1.health_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -18,8 +20,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
+        android:name=".SplashActivity"
+        android:label="CliniConnect"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,8 +30,12 @@
         </activity>
 
         <activity
+            android:name=".LoginActivity"
+            android:label="Login to CliniConnect"/>
+
+        <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="Home CliniConnect"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Paperwork"
