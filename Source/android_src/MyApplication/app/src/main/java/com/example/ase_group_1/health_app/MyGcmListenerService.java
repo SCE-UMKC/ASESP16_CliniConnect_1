@@ -83,7 +83,8 @@ public class MyGcmListenerService extends GcmListenerService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.cliniconnect_app_size)
-                .setContentTitle("CliniConnect Appointment")
+                .setContentTitle("CliniConnect Reminder")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
