@@ -314,6 +314,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
+
         }
 
         @Override
@@ -372,6 +373,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 finish();
                 Intent redirect = new Intent(LoginActivity.this, MainActivity.class);
+                redirect.putExtra("username", mEmail.toString());
                 LoginActivity.this.startActivity(redirect);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
