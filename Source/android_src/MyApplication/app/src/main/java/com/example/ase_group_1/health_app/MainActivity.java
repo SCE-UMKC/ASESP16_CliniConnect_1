@@ -135,8 +135,13 @@ public class MainActivity extends AppCompatActivity
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
             mapIntent.setPackage("com.google.android.apps.maps");
             startActivity(mapIntent);
+        }
+        else if (id == R.id.nav_clinical_test) {
 
-        } else if (id == R.id.nav_log) {
+            Intent clinical_test = new Intent(this, ClinicalTest.class);
+            startActivity(clinical_test);
+        }
+        else if (id == R.id.nav_log) {
             Intent log_intent = new Intent(this, BPLog.class);
             startActivity(log_intent);
 
