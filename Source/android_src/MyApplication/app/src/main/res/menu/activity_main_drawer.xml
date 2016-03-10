@@ -18,6 +18,10 @@
             android:id="@+id/nav_directions"
             android:icon="@drawable/ic_directions_black_24dp"
             android:title="Directions" />
+        <item
+            android:id="@+id/nav_clinical_test"
+            android:icon="@drawable/ic_receipt_black_24dp"
+            android:title="Lab Forms" />
     </group>
 
     <item android:title="Communicate">

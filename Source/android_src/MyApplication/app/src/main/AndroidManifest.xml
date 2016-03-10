@@ -53,6 +53,14 @@
             android:name=".BPLog"
             android:label="@string/title_activity_bplog"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ClinicalTest"
+            android:label="Lab Forms"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".QRCodeAndDetailsActivity"
+            android:label="Lab Form Details"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
 
 

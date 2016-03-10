@@ -140,6 +140,12 @@ public class MainActivity extends AppCompatActivity
             Intent log_intent = new Intent(this, BPLog.class);
             startActivity(log_intent);
 
+        } else if (id == R.id.nav_clinical_test) {
+
+            Intent clinical_test = new Intent(this, ClinicalTest.class);
+            clinical_test.putExtra("username",mEmail);
+            startActivity(clinical_test);
+
         } else if (id == R.id.nav_info) {
             Intent info_intent = new Intent(this, ClinicInfo.class);
             startActivity(info_intent);
