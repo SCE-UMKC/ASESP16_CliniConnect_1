@@ -1,0 +1,45 @@
+<ion-view title="Register Patient" ng-controller="registerPatientCtrl as r">
+    <ion-nav-bar class="bar-dark"></ion-nav-bar>
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list">
+            <label class="item item-input" name="firstName">
+                <span class="input-label">First Name</span>
+                <input type="text" placeholder="First Name" ng-model="r.firstName">
+            </label>
+            <label class="item item-input" name="lastName">
+                <span class="input-label">Last Name</span>
+                <input type="text" placeholder="Last Name" ng-model="r.lastName">
+            </label>
+            <label class="item item-input" name="dob">
+                <span class="input-label">Date of Birth</span>
+                <input type="text" placeholder="01/01/1901" ng-model="r.dob">
+            </label>
+            <label class="item item-select" name="selectPhysician">
+                <span class="input-label">Physician</span>
+                <select ng-model=r.dr ng-change="r.updateDr(r.dr)">
+                    <option>Dr. Keith John</option>
+                    <option>Dr. Rohit Matety</option>
+                    <option>Dr. Kumar Love</option>
+                    <option>Dr. Rnady Sanders</option>
+                    <option>Dr. Sarah Shambo</option>
+                    <option>Dr. Steven Panda</option>
+                    <option>Dr. Reson Rocks</option>
+                    <option>Dr. Candy Cane</option>
+                </select>
+            </label>
+            <label class="item item-input" name="username">
+                <span class="input-label">Username</span>
+                <input type="email" placeholder="user@clinic.com" ng-model="r.username">
+            </label>
+            <label class="item item-input" name="password1">
+                <span class="input-label">Password</span>
+                <input type="password" placeholder="Password" ng-model="r.password">
+            </label>
+            <label class="item item-input" name="password2">
+                <span class="input-label">Password</span>
+                <input type="password" placeholder="Confirm Password" ng-model="r.password2">
+            </label>
+        </form>
+        <button id="registerPatient-button4" ng-click="r.regPat()" class="button button-positive  button-block icon-left ion-android-add-circle">Register Patient</button>
+    </ion-content>
+</ion-view>

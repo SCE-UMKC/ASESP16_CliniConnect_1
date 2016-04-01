@@ -15,6 +15,68 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BP LOG goes here"/>
+        android:text="Blood Pressure"
+        android:id="@+id/textView"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/diastolic"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:hint="Diastolic - 120" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/systolic"
+        android:layout_below="@+id/diastolic"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:layout_alignEnd="@+id/diastolic"
+        android:hint="Systolic - 80" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Sugar"
+        android:id="@+id/textView2"
+        android:textStyle="bold"
+        android:layout_marginBottom="29dp"
+        android:layout_above="@+id/bloodSugar"
+        android:layout_centerHorizontal="true"
+        android:textSize="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/bloodSugar"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/systolic"
+        android:hint="Sugar - 90" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Vitals"
+        android:id="@+id/button"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/bloodSugar"
+        android:layout_centerHorizontal="true"
+        android:onClick="submitVitals" />
+
 
 </RelativeLayout>

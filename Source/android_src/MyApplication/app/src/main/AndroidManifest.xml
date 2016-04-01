@@ -51,7 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BPLog"
-            android:label="@string/title_activity_bplog"
+            android:label="Vitals Log"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ClinicalTest"
@@ -61,6 +61,11 @@
             android:name=".QRCodeAndDetailsActivity"
             android:label="Lab Form Details"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".VisitForm"
+            android:label="Visit Forms"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
 
 
 

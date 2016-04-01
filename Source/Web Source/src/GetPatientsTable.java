@@ -67,6 +67,11 @@ public class GetPatientsTable extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+		response.setHeader("Access-Control-Max-Age", "86400");
 		
 		response.setContentType("application/json");     
 		PrintWriter out = response.getWriter();  
@@ -88,6 +93,9 @@ public class GetPatientsTable extends HttpServlet {
 			info2.put("name",document.get("name").toString());
 			info2.put("date",document.get("date").toString());
 			info2.put("dr",document.get("dr").toString());
+			info2.put("dob",document.get("dob").toString());
+			info2.put("username",document.get("username").toString());
+			info2.put("password",document.get("password").toString());
 			jArr.put(info2);
 			
 		} catch (JSONException e) {

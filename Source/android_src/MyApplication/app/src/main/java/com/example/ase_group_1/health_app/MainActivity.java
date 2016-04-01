@@ -126,7 +126,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_paperwork) {
-            Intent paperwork_intent = new Intent(this, Paperwork.class);
+            Intent paperwork_intent = new Intent(this, VisitForm.class);
+            paperwork_intent.putExtra("username", mEmail);
             startActivity(paperwork_intent);
 
         } else if (id == R.id.nav_directions) {
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_log) {
             Intent log_intent = new Intent(this, BPLog.class);
+            log_intent.putExtra("username", mEmail);
             startActivity(log_intent);
 
         } else if (id == R.id.nav_clinical_test) {

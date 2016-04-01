@@ -1,0 +1,36 @@
+<ion-view title="Clinic Information" ng-controller="clinicInformationCtrl as c">
+    <ion-nav-bar class="bar-dark"></ion-nav-bar>
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div>
+            <p><strong>Current Information</strong></p>
+            <p><strong>Name: </strong>{{clinicName}} </p>
+            <p><strong>Address: </strong>{{clinicAddress}}</p>
+            <p><strong>Phone: </strong>{{clinicPhone}}</p>
+            <p><strong>Email: </strong>{{clinicEmail}}</p>
+            <p><strong>Hours: </strong>{{clinicHours}}</p>
+        </div>
+        <form class="list">
+            <label class="item item-input" name="clinicName">
+                <span class="input-label">Clinic Name</span>
+                <input type="text" placeholder={{clinicName}} ng-model="c.clinicName">
+            </label>
+            <label class="item item-input" name="clinicAddress">
+                <span class="input-label">Clinic Address</span>
+                <input type="text" placeholder={{clinicAddress}} ng-model="c.clinicAddress">
+            </label>
+            <label class="item item-input" name="clinicPhone">
+                <span class="input-label">Clinic Phone</span>
+                <input type="text" placeholder={{clinicPhone}} ng-model="c.clinicPhone">
+            </label>
+            <label class="item item-input" name="clinicEmail">
+                <span class="input-label">Clinic Email</span>
+                <input type="text" placeholder={{clinicEmail}} ng-model="c.clinicEmail">
+            </label>
+            <label class="item item-input" name="clinicHours">
+                <span class="input-label">Clinic Hours</span>
+                <input type="text" placeholder={{clinicHours}} ng-model="c.clinicHours">
+            </label>
+        </form>
+        <button id="clinicInformation-button1" style="font-weight:bold;border-radius:0px 0px 0px 0px;" class="button button-positive  button-block icon-left ion-information" ng-click="c.submitClinicInfo()">Update Clinic Information</button>
+    </ion-content>
+</ion-view>

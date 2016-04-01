@@ -3,7 +3,9 @@
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +40,7 @@ public class rxSubmit extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -49,33 +52,41 @@ public class rxSubmit extends HttpServlet {
 		System.out.println("I am here in doPost!!!!!");
 		
 		
-		String testName=request.getParameter("testName");
-		String specialInstructions = request.getParameter("special_instructions");
+		String testName=request.getParameter("Name");
+		String specialInstructions = request.getParameter("Special_Instructions");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		String dateTimeStamp = dateFormat.format(date); //2014/08/06 15:59:48
 		BasicDBObject clinicalTestRow = new BasicDBObject();
 		
 		//HardCoded for now.
-		String patientName = "Shweta Parihar";
+//		String patientName = "Shweta Parihar";
 		String patientID = "1234567890.00";
-		String physicianName = "Dr. Anil Jain";
-		String physicianClinicName = "Dr Lal Multi Speciality Clinic";
+//		String physicianName = "Dr. Anil Jain";
+//		String physicianClinicName = "Dr Lal Multi Speciality Clinic";
 			
-		System.out.println("1. patientID : "+patientID);
-		System.out.println("2. patientName : "+patientName);
-		System.out.println("3. physicianName : "+physicianName);
-		System.out.println("4. physicianClinicName : "+physicianClinicName);
-		System.out.println("5. testName : "+testName);
-		System.out.println("6. specialInstructions : "+specialInstructions);
-		System.out.println("7. dateTimeStamp : "+dateTimeStamp);		
+//		System.out.println("1. patientID : "+patientID);
+//		System.out.println("2. patientName : "+patientName);
+//		System.out.println("3. physicianName : "+physicianName);
+//		System.out.println("4. physicianClinicName : "+physicianClinicName);
+//		System.out.println("5. testName : "+testName);
+//		System.out.println("6. specialInstructions : "+specialInstructions);
+//		System.out.println("7. dateTimeStamp : "+dateTimeStamp);		
 		
 		clinicalTestRow.put("patientID",patientID);
-		clinicalTestRow.put("patientName",patientName);
-		clinicalTestRow.put("physicianName",physicianName);
-		clinicalTestRow.put("physicianClinicName",physicianClinicName);
-		clinicalTestRow.put("testName",testName);
-		clinicalTestRow.put("specialInstructions",specialInstructions);
+		clinicalTestRow.put("patientName",request.getParameter("patientName"));
+		clinicalTestRow.put("username",request.getParameter("username"));
+		clinicalTestRow.put("physicianName",request.getParameter("physicianName"));
+		clinicalTestRow.put("physicianClinicName",request.getParameter("physicianClinicName"));
+		
+		List<BasicDBObject> tsts = new ArrayList<>();
+		BasicDBObject tn = new BasicDBObject();
+		tn.put("Name", testName);
+		tn.put("Special_Instructions", specialInstructions);
+		tsts.add(tn);
+		
+		clinicalTestRow.put("Tests", tsts);
+
 		clinicalTestRow.put("dateTimeStamp",dateTimeStamp);		
 		
 		MongoClientURI uri = new MongoClientURI("mongodb://shweta:shweta@ds023388.mlab.com:23388/clinic_db");
@@ -87,7 +98,7 @@ public class rxSubmit extends HttpServlet {
 		
 
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Access-Control-Allow-Methods", "POST");
+		response.setHeader("Access-Control-Allow-Methods", "GET");
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		response.setHeader("Access-Control-Max-Age", "86400");
 

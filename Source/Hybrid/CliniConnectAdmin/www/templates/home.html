@@ -1,0 +1,292 @@
+<ion-view title="CliniConnect: Upcoming Appointments">
+    <ion-nav-bar class="bar-dark"></ion-nav-bar>
+    <ion-content overflow-scroll="true" padding="true" style="background: url(img/s1Xl0i84Sve3bAX4IHZg_cliniconnect_full.png) no-repeat center;" class="has-header" ng-controller="homeCtrl as vm">
+        
+    <button class="button button-icon ion-android-search" 
+    ng-click="vm.showFilterBar()"></button>
+        
+    <ion-list>
+      <div ng-repeat="item in vm.items | orderBy:'date'" divider-collection-repeat>
+              <ion-item ng-click="vm.openModal(item.patient, item.date, item.dr, item.dob, item.username, item.password)">
+                <h2>Patient: <b>{{item.patient}}</b></h2>
+                <p>Appointment Date: <b>{{item.date}}</b></p>
+                  <p>Physician: <b>{{item.dr}}</b></p>
+              </ion-item>          
+      </div>
+    </ion-list>
+        
+    </ion-content>
+</ion-view>
+
+<script id="pat-detail-modal.html" type="text/ng-template">
+  <div class="modal" style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;">
+
+  <ion-tabs class="tabs-stable tabs-icon-top">
+
+  <ion-tab title="Patient Details" icon-on="ion-ios-person" icon-off="ion-ios-person-outline">
+    <!-- Tab 1 content -->
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Patient Details: <b>{{pats1}}</b></h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>       
+          <ion-item><span><p>Patient: <b>{{pats1}}</b></p><img ng-src={{pic}}></span></ion-item>
+          <ion-item><p>Appointment: <b>{{date1}}</b></p></ion-item>         
+          <ion-item><p>Date of Birth: <b>{{dob}}</b></p></ion-item>
+          <ion-item><p>Physican: <b>{{dr1}}</b></p></ion-item>
+          <ion-item><p>Username: <b>{{username}}</b></p></ion-item>
+          <ion-item><p>Password: <b>{{password}}</b></p></ion-item>
+      </ion-list>       
+    </ion-content>
+      <!-- Tab 1 Content END -->
+  </ion-tab>
+
+  <ion-tab title="Vitals Log" icon-on="ion-ios-medkit" icon-off="ion-ios-medkit-outline">
+        <!-- Tab 2 content -->
+    <ion-header-bar class="bar-positive" print-section>
+        <h1 class="title">Vitals Log: <b>{{pats1}}</b></h1>
+        <div class="button button-clear" ng-click="" print-btn><span class="icon ion-ios-printer-outline"></span></div>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list ng-controller="homeCtrl" print-section>  
+              <ion-item ng-repeat="item2 in vitalItems | orderBy:'-timestamp'" divider-collection-repeat>
+                  <h2>Date: <b>{{item2.timestamp}}</b></h2>
+                  <p>Blood Sugar: <b>{{item2.BS}}</b></p>
+                  <p>Blood Pressure: <b>{{item2.BP}}</b></p>
+                  <p ng-if="item2.status=='danger'">Status: <b style="color:red;">{{item2.status.toUpperCase()}}</b></p>
+                  <p ng-if="item2.status=='safe'">Status: <b>{{item2.status.toUpperCase()}}</b></p>
+              </ion-item> 
+      </ion-list>       
+    </ion-content>
+      <!-- Tab 2 Content END -->
+  </ion-tab>
+
+  <ion-tab title="Pre-Visit Forms" icon-on="ion-ios-list" icon-off="ion-ios-list-outline">
+      <!-- Tab 3 content -->
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Pre-Visit Froms: <b>{{pats1}}</b></h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>       
+          <ion-item ng-repeat="item3 in pForms | orderBy:'-timestamp'" 
+                    ng-click="openModal2(item3.timestamp, date1, pats1, item3.drink, item3.smoke,
+                              item3.surgeries, item3.meds, item3.tuberculosis, item3.diabetes, 
+                              item3.cancer, item3.complaints, item3.allergies)">
+              <h2>Date Submitted: <b>{{item3.timestamp}}</b></h2>
+              <p>Appointment Date: <b>{{date1}}</b></p>
+              <p>Patient: <b>{{pats1}}</b></p>
+          </ion-item>                     
+      </ion-list>        
+    </ion-content>
+      <!-- Tab 3 Content END -->
+  </ion-tab>
+      
+  <ion-tab title="Appt. Reminder" icon-on="ion-ios-calendar" icon-off="ion-ios-calendar-outline">
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Appointment Reminder: <b>{{pats1}}</b></h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+      
+          <ion-content>
+        <form class="list">
+           <button id="datePickerButton" class="button button-stable button-block icon-left ion-android-calendar" ng-click="openDatePicker()"><b>{{dateP}}</b></button>
+            
+            <ionic-timepicker input-obj="timePickerObject">
+              <button class="button button-block button-stable icon-left ion-ios-clock-outline overflowShow">
+                <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+                  <b>{{timeP}}</b>
+              </button>
+            </ionic-timepicker>
+            
+            <label class="item item-input" name="enterMessage">
+                <textarea placeholder="Optional Message" ng-model="extraMessage" ng-change="extraMsg(extraMessage)" style="text-align:center"> </textarea>
+            </label>
+        </form>
+        <button id="appointmentReminder-button2" class="button button-dark  button-block icon-left ion-android-calendar" ng-click="sendPush()">Send Appointment Reminder</button>
+    </ion-content>
+            
+  </ion-tab>
+ <!-- Tab 3 content END-->      
+      
+   <!-- Tab 4 content -->
+  <ion-tab title="Send Labs" icon-on="ion-ios-paperplane" icon-off="ion-ios-paperplane-outline">
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Send Labs: <b>{{pats1}}</b></h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+      
+        <ion-content overflow-scroll="true" padding="true" style="background: url(img/eITBCLDQsaMJ2jvXCMJI_cliniconnect_full.png) no-repeat center;" class="has-header">
+        <form class="list">
+                     
+            <ion-item><p>Patient: <b>{{pats1}}</b></p></ion-item>
+       
+          
+            <label class="item item-select" name="selectLab" ng-model="labSelect">
+                <span class="input-label">Lab:  {{labSelect}}</span>
+                <select ng-model=labTest ng-change="updateLab(labTest)">
+                   <option onClick="pickLab(ACTH Suppression)">ACTH Suppression</option>
+                    <option onClick="pickLab(Adrenocorticotropic Hormone (ACTH))">Adrenocorticotropic Hormone (ACTH)</option>
+                    <option onClick="pickLab(Alanine Aminotransferase (ALT))">Alanine Aminotransferase (ALT)</option>
+                    <option onClick="pickLab(Albumin)">Albumin</option>
+                    <option onClick="pickLab(Alkaline Phosphatase)">Alkaline Phosphatase</option>
+                    <option onClick="pickLab(Allergy Tests)">Allergy Tests</option>
+                    <option onClick="pickLab(Alpha-Fetoprotein (AFP))">Alpha-Fetoprotein (AFP)</option>
+                    <option onClick="pickLab(Amylase)">Amylase</option>
+                    <option onClick="pickLab(Antibody Tests (Coombs Test))">Antibody Tests (Coombs Test)</option>
+                    <option onClick="pickLab(Antinuclear Antibodies (ANA))">Antinuclear Antibodies (ANA)</option>
+                    <option onClick="pickLab(Aspartate Aminotransferase (AST))">Aspartate Aminotransferase (AST)</option>
+                    <option onClick="pickLab(Bicarbonate (Carbon Dioxide))">Bicarbonate (Carbon Dioxide)</option>
+                    <option onClick="pickLab(Bilirubin)">Bilirubin</option>
+                    <option onClick="pickLab(Blood Culture)">Blood Culture</option>
+                    <option onClick="pickLab(Blood Glucose)">Blood Glucose</option>
+                    <option onClick="pickLab(Blood Type)">Blood Type</option>
+                    <option onClick="pickLab(Blood Urea Nitrogen (BUN))">Blood Urea Nitrogen (BUN)</option>
+                    <option onClick="pickLab(Breast Cancer (BRCA) Gene)">Breast Cancer (BRCA) Gene</option>
+                    <option onClick="pickLab(C-Reactive Protein (CRP))">C-Reactive Protein (CRP)</option>
+                    <option onClick="pickLab(Calcium (Ca))">Calcium (Ca)</option>
+                    <option onClick="pickLab(Cardiac Enzyme Studies)">Cardiac Enzyme Studies</option>
+                    <option onClick="pickLab(CD4+ Count)">CD4+ Count</option>
+                    <option onClick="pickLab(Chemistry Screen)">Chemistry Screen</option>
+                    <option onClick="pickLab(Chlamydia Tests)">Chlamydia Tests</option>
+                    <option onClick="pickLab(Chloride (Cl))">Chloride (Cl)</option>
+                    <option onClick="pickLab(Cholesterol and Triglycerides)">Cholesterol and Triglycerides</option>
+                    <option onClick="pickLab(Cobalamin)">Cobalamin</option>
+                    <option onClick="pickLab(Complete Blood Count (CBC))">Complete Blood Count (CBC)</option>
+                    <option onClick="pickLab(Coombs Test)">Coombs Test</option>
+                    <option onClick="pickLab(Creatinine and Creatinine Clearance)">Creatinine and Creatinine Clearance</option>
+                    <option onClick="pickLab(Dexamethasone Suppression Test)">Dexamethasone Suppression Test</option>
+                    <option onClick="pickLab(Electrolyte Panel)">Electrolyte Panel</option>
+                    <option onClick="pickLab(Estrogens)">Estrogens</option>
+                    <option onClick="pickLab(Folic Acid)">Folic Acid</option>
+                    <option onClick="pickLab(Follicle-Stimulating Hormone)">Follicle-Stimulating Hormone</option>
+                    <option onClick="pickLab(Globulin)">Globulin</option>
+                    <option onClick="pickLab(Glucose)">Glucose</option>
+                    <option onClick="pickLab(Glycohemoglobin (HbA1c, A1c))">Glycohemoglobin (HbA1c, A1c)</option>
+                    <option onClick="pickLab(Gonorrhea)">Gonorrhea</option>
+                    <option onClick="pickLab(Growth Hormone)">Growth Hormone</option>
+                    <option onClick="pickLab(HDL Cholesterol)">HDL Cholesterol</option>
+                    <option onClick="pickLab(Helicobacter pylori)">Helicobacter pylori</option>
+                    <option onClick="pickLab(Hepatitis Panel)">Hepatitis Panel</option>
+                    <option onClick="pickLab(Homocysteine)">Homocysteine</option>
+                    <option onClick="pickLab(Human Chorionic Gonadotropin (hCG))">Human Chorionic Gonadotropin (hCG)</option>
+                    <option onClick="pickLab(Human Immunodeficiency Virus (HIV))">Human Immunodeficiency Virus (HIV)</option>
+                    <option onClick="pickLab(Iron (Fe))">Iron (Fe)</option>
+                    <option onClick="pickLab(Ketones)">Ketones</option>
+                    <option onClick="pickLab(Lactic Acid Dehydrogenase (LDH))">Lactic Acid Dehydrogenase (LDH)</option>
+                    <option onClick="pickLab(LDL Cholesterol)">LDL Cholesterol</option>
+                    <option onClick="pickLab(Lead (Pb))">Lead (Pb)</option>
+                    <option onClick="pickLab(Liver Function Panel)">Liver Function Panel</option>
+                    <option onClick="pickLab(Magnesium (Mg))">Magnesium (Mg)</option>
+                    <option onClick="pickLab(Microalbumin Urine Test)">Microalbumin Urine Test</option>
+                    <option onClick="pickLab(Mononucleosis)">Mononucleosis</option>
+                    <option onClick="pickLab(Oral Glucose Tolerance Test)">Oral Glucose Tolerance Test</option>
+                    <option onClick="pickLab(Parathyroid Hormone (PTH))">Parathyroid Hormone (PTH)</option>
+                    <option onClick="pickLab(Partial Thromboplastin Time)">Partial Thromboplastin Time</option>
+                    <option onClick="pickLab(Phosphate (Phosphorus))">Phosphate (Phosphorus)</option>
+                    <option onClick="pickLab(Potassium (K) in Blood)">Potassium (K) in Blood</option>
+                    <option onClick="pickLab(Potassium (K) in Urine)">Potassium (K) in Urine</option>
+                    <option onClick="pickLab(Pregnancy Test)">Pregnancy Test</option>
+                    <option onClick="pickLab(Progesterone)">Progesterone</option>
+                    <option onClick="pickLab(Prolactin)">Prolactin</option>
+                    <option onClick="pickLab(Prostate-Specific Antigen (PSA))">Prostate-Specific Antigen (PSA)</option>
+                    <option onClick="pickLab(Prothrombin Time)">Prothrombin Time</option>
+                    <option onClick="pickLab(Reticulocyte Count)">Reticulocyte Count</option>
+                    <option onClick="pickLab(Rheumatoid Factor (RF))">Rheumatoid Factor (RF)</option>
+                    <option onClick="pickLab(Rubella)">Rubella</option>
+                    <option onClick="pickLab(Sedimentation Rate)">Sedimentation Rate</option>
+                    <option onClick="pickLab(Sickle Cell Test)">Sickle Cell Test</option>
+                    <option onClick="pickLab(Sodium (Na))">Sodium (Na)</option>
+                    <option onClick="pickLab(Stool Analysis)">Stool Analysis</option>
+                    <option onClick="pickLab(Stool Analysis for Giardiasis (Ova and Parasite Test))">Stool Analysis for Giardiasis (Ova and Parasite Test)</option>
+                    <option onClick="pickLab(Stool Antigen Test)">Stool Antigen Test</option>
+                    <option onClick="pickLab(Stool Culture)">Stool Culture</option>
+                    <option onClick="pickLab(Syphilis)">Syphilis</option>
+                    <option onClick="pickLab(Testosterone)">Testosterone</option>
+                    <option onClick="pickLab(Thyroid Hormone)">Thyroid Hormone</option>
+                    <option onClick="pickLab(Thyroid-Stimulating Hormone (TSH))">Thyroid-Stimulating Hormone (TSH)</option>
+                    <option onClick="pickLab(Total Serum Protein)">Total Serum Protein</option>
+                    <option onClick="pickLab(Uric Acid)">Uric Acid</option>
+                    <option onClick="pickLab(Urine Test)">Urine Test</option>
+                    <option onClick="pickLab(Viral Tests)">Viral Tests</option>
+                    <option onClick="pickLab(Vitamin B12)">Vitamin B12</option>
+
+
+                 
+                </select>
+            </label>
+            <label class="item item-select" name="clinicName">
+                <span class="input-label">Clinic Name</span>
+                <select ng-model="location" ng-change="updateLoc(location)">
+                    <option>Quest Diagnostics</option>
+                    <option>Lab Corp</option>
+                    <option>UMKC Lab Service</option>
+                </select>
+            </label>
+            <ion-item><p>Physican: <b>{{dr1}}</b></p></ion-item> 
+            <label class="item item-input" name="specialInstructions">
+                <span class="input-label">Special Instructions:</span><textarea placeholder="Optional" ng-model="sInst" ng-change="updateInst(sInst)"> </textarea>
+            </label>
+        </form>
+        <button id="sendLabs-button3" class="button button-dark  button-block icon-left ion-android-send" ng-click="sendLab()">Send Lab Form</button>
+    </ion-content>
+            
+  </ion-tab>
+
+</ion-tabs>
+  </div>
+</script>
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view style="width: 80%; height: 80%; top: 10%; left: 10%; right: 10%; bottom: 10%;" print-section>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Pre-Visit Form For Appointment: {{aDate}}</h1>
+      <div class="button button-clear" ng-click="" print-btn><span class="icon ion-ios-printer-outline"></span></div>
+      <div class="button button-clear" ng-click="modal2.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+     <ion-list>
+        <ion-item>
+            <h2>Patient: <b>{{pName}}</b></h2>
+            <h2>Appointment Date: <b>{{aDate}}</b></h2>
+        </ion-item> 
+
+         <ion-item>
+             <h2>Complaints:</h2>
+             <p ng-repeat="c in comp track by $index"><b>{{c}}</b></p>             
+         </ion-item>
+
+         <ion-item>
+             <h2>Medications:</h2>
+             <p ng-repeat="m in meds track by $index"><b>{{m}}</b></p>            
+         </ion-item>
+         
+         <ion-item>
+             <h2>Allergies:</h2>
+             <p ng-repeat="a in all track by $index"><b>{{a}}</b></p>            
+         </ion-item>
+
+         <ion-item>
+             <h2>Surgeries:</h2>
+             <p ng-repeat="s in surg track by $index"><b>{{s}}</b></p>
+         </ion-item>
+
+         <ion-item>
+             <h2>Family History</h2>
+             <p>Cancer: <b>{{cancer}}</b></p>
+             <p>Diabetes: <b>{{diabetes}}</b></p>
+             <p>Tuberculosis: <b>{{tuber}}</b></p>
+         </ion-item>
+
+         <ion-item>
+             <h2>Drug Use</h2>
+             <p>Smoke: <b>{{smoke}}</b></p>
+             <p>Drink Alcohol: <b>{{drink}}</b></p>
+         </ion-item>
+         
+     </ion-list>
+    </ion-content>
+  </ion-modal-view>
+</script>

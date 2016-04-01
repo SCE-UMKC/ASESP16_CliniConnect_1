@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/cliniconnect_full"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ase_group_1.health_app.ClinicInfo"
     tools:showIn="@layout/activity_clincal_test">
@@ -15,6 +16,56 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLINIC INFO goes here"/>
+        android:text="CLINIC INFO"
+        android:id="@+id/header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="address"
+        android:id="@+id/address"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:textStyle="bold"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hours"
+        android:id="@+id/hours"
+        android:layout_below="@+id/address"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:textStyle="bold"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="phone"
+        android:id="@+id/phone"
+        android:layout_below="@+id/hours"
+        android:layout_alignEnd="@+id/email"
+        android:layout_marginTop="45dp"
+        android:textStyle="bold"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:id="@+id/email"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/phone"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="24dp" />
 
 </RelativeLayout>
