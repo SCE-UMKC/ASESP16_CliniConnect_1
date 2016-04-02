@@ -251,7 +251,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     
     
     $scope.sendLab = function(){
-        if($scope.pats1 && $scope.dr1 & $scope.location && $scope.labTest && $scope.sInst && $scope.username){
+        if($scope.pats1 && $scope.dr1 && $scope.location && $scope.labTest && $scope.sInst && $scope.username){
             var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/rxSubmit?'
             + "patientName=" + $scope.pats1 + "&"
             + "physicianName=" + $scope.dr1 + "&"
@@ -266,7 +266,8 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
             });
         }
         else{
-            alert("Please complete the form.");
+            
+            alert("Please complete the form."); 
             return;
         }
     }

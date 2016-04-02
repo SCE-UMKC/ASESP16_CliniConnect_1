@@ -124,9 +124,9 @@ public class ClinicInfo extends AppCompatActivity {
                 try{
                     header.setText(jObj.getString("clinicName"));
                     address.setText(jObj.getString("clinicAddress"));
-                    hours.setText(jObj.getString("clinicHours"));
-                    phone.setText(jObj.getString("clinicPhone"));
-                    email.setText(jObj.getString("clinicEmail"));
+                    hours.setText("Hours: " + jObj.getString("clinicHours"));
+                    phone.setText("Phone: " + jObj.getString("clinicPhone"));
+                    email.setText("Email: " + jObj.getString("clinicEmail"));
                 }catch(Exception e){
                     Log.d("exception", "Clinic info");
                 }

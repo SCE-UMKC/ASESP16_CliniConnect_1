@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_email) {
 
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto","CLIN@MyClinic.com", null));
+                    "mailto","CLINIC@MyClinic.com", null));
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "CLINIC QUESTION");
             startActivity(Intent.createChooser(emailIntent, "Send email..."));
 

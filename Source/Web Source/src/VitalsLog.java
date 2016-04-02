@@ -71,14 +71,14 @@ public class VitalsLog extends HttpServlet {
 					.append("BP", request.getParameter("BP"))
 					.append("BS", request.getParameter("BS"))
 					.append("timestamp", dateTimeStamp)
-					.append("status", "safe"));
+					.append("status", "danger"));
 		}else{
 			db.getCollection("vitals_log").insertOne(new Document()
 					.append("username", request.getParameter("username"))
 					.append("BP", request.getParameter("BP"))
 					.append("BS", request.getParameter("BS"))
 					.append("timestamp", dateTimeStamp)
-					.append("status", "danger"));
+					.append("status", "safe"));
 			
 		}
 		mongoClient.close();
