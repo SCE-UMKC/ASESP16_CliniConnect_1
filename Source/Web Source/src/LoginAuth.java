@@ -28,6 +28,7 @@ public class LoginAuth extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     Boolean isVerified = false;
     HttpServletRequest request2;
+    JSONObject info;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -41,7 +42,7 @@ public class LoginAuth extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		JSONObject info = new JSONObject();
+		info = new JSONObject();
 		request2 = request;
 		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
 		MongoClient mongoClient = new MongoClient(uri);
@@ -75,6 +76,7 @@ public class LoginAuth extends HttpServlet {
 		}catch (JSONException e) {
 			e.printStackTrace();
 		}
+		getClinicInfo();
 		
 	    response.setHeader("Access-Control-Allow-Origin", "*");
 	    response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
@@ -112,16 +114,50 @@ public class LoginAuth extends HttpServlet {
 			System.out.println(request2.getParameter("username"));
 			System.out.println(request2.getParameter("password"));
 			isVerified = true;
-//			String apiKey = "AIzaSyD5T5ouxL80ESZIRBfVmNiKob1Cwt3biIc";
-//			int numOfRetries = 3;
-//			Sender sender = new Sender(apiKey);
-//			Message message = new Message.Builder()
-//			    .addData("message", request2.getParameter("username"))
-//			    .addData("other-parameter", "some value")
-//			    .build();
-//			Result result = sender.send(message, loginInfo.get("token").toString(), numOfRetries);
+			
+			try{
+				info.put("username", loginInfo.get("username"));
+				info.put("name", loginInfo.get("name"));
+				info.put("date", loginInfo.get("date"));
+			}catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 		
+	}
+	
+	void getClinicInfo(){
+		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
+		MongoClient mongoClient = new MongoClient(uri);
+		MongoDatabase db = mongoClient.getDatabase("clinic_db");
+		
+		FindIterable<Document> iterable = db.getCollection("clinic_info").find();
+			
+		iterable.forEach(new Block<Document>() {
+			
+		    @Override
+		    public void apply(final Document document) {
+		        System.out.println(document);
+		        buildJSON(document);
+
+		    } 
+		});
+		mongoClient.close();
+		
+	}
+	
+	public void buildJSON(Document document){
+		try {
+			info.put("clinicName",document.get("clinicName"));
+			info.put("clinicAddress",document.get("clinicAddress"));
+			info.put("clinicPhone",document.get("clinicPhone"));
+			info.put("clinicEmail",document.get("clinicEmail"));
+			info.put("clinicHours",document.get("clinicHours"));
+			info.put("getInfo", "success");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

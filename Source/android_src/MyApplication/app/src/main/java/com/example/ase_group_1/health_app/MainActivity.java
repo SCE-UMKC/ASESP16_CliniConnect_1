@@ -18,9 +18,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -33,6 +35,13 @@ public class MainActivity extends AppCompatActivity
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     private String mEmail;
+    private String patDate;
+    private String patName;
+    private String clinicAddress;
+    private String clinicPhone;
+    private String clinicEmail;
+    TextView patNameText;
+    TextView patDateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mEmail = getIntent().getStringExtra("username");
+        clinicAddress = getIntent().getStringExtra("address");
+        clinicEmail = getIntent().getStringExtra("email");
+        clinicPhone = getIntent().getStringExtra("phone");
+
+
+        patName = getIntent().getStringExtra("name");
+        patNameText = (TextView)findViewById(R.id.patName);
+        patNameText.setText(patName);
+
+        patDate = getIntent().getStringExtra("date");
+        patDateText =(TextView)findViewById(R.id.patDate);
+        patDateText.setText(patDate);
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +81,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        drawer.openDrawer(Gravity.LEFT);
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -132,7 +156,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_directions) {
 
-            Uri gmmIntentUri = Uri.parse("google.navigation:q=UMKC,+Kansas City+Missouri");
+            Uri gmmIntentUri = Uri.parse("google.navigation:q=" + clinicAddress);
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
             mapIntent.setPackage("com.google.android.apps.maps");
             startActivity(mapIntent);
@@ -153,7 +177,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(info_intent);
 
         } else if (id == R.id.nav_phone) {
-            String number = "1234567899";
+            String number = clinicPhone;
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:" +number));
             try {
@@ -165,7 +189,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_email) {
 
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto","CLINIC@MyClinic.com", null));
+                    "mailto", clinicEmail, null));
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "CLINIC QUESTION");
             startActivity(Intent.createChooser(emailIntent, "Send email..."));
 

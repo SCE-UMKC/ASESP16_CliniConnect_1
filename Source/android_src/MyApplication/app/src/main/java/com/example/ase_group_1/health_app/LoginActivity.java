@@ -69,6 +69,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     JSONParser2 jsonParser2 = new JSONParser2();
 
+    String patName;
+    String patDate;
+    String clinicEmail;
+    String clinicPhone;
+    String clinicAddress;
+    String clinicName;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -345,6 +353,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 String success = json.get("login").toString();
+                patName = json.get("name").toString();
+                patDate = json.get("date").toString();
+                clinicAddress = json.get("clinicAddress").toString();
+                clinicEmail = json.get("clinicEmail").toString();
+                clinicPhone = json.get("clinicPhone").toString();
                 if(success.equals("success")){
                     return true;
                 }
@@ -374,6 +387,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
                 Intent redirect = new Intent(LoginActivity.this, MainActivity.class);
                 redirect.putExtra("username", mEmail.toString());
+                redirect.putExtra("name", patName);
+                redirect.putExtra("date", patDate);
+                redirect.putExtra("phone", clinicPhone);
+                redirect.putExtra("address", clinicAddress);
+                redirect.putExtra("email", clinicEmail);
                 LoginActivity.this.startActivity(redirect);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
