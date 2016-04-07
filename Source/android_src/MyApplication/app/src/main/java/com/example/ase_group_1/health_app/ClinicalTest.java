@@ -65,7 +65,7 @@ public class ClinicalTest extends AppCompatActivity {
             args.add(new BasicNameValuePair("username", mEmail));
 
 
-            String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin/GetLabDate";
+            String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetLabDate";
 
             JSONObject json;
             // getting JSON Object
