@@ -49,16 +49,22 @@
         <div class="button button-clear" ng-click="" print-btn><span class="icon ion-ios-printer-outline"></span></div>
         <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
     </ion-header-bar>
-    <ion-content>
-      <ion-list ng-controller="homeCtrl" print-section>  
-              <ion-item ng-repeat="item2 in vitalItems | orderBy:'-timestamp'" divider-collection-repeat>
-                  <h2>Date: <b>{{item2.timestamp}}</b></h2>
-                  <p>Blood Sugar: <b>{{item2.BS}}</b></p>
-                  <p>Blood Pressure: <b>{{item2.BP}}</b></p>
-                  <p ng-if="item2.status=='danger'">Status: <b style="color:red;">{{item2.status.toUpperCase()}}</b></p>
-                  <p ng-if="item2.status=='safe'">Status: <b>{{item2.status.toUpperCase()}}</b></p>
-              </ion-item> 
-      </ion-list>       
+    <ion-content>   
+      <table ng-controller="homeCtrl" print-section class="center">  
+              <tr>
+                  <th><b>Date</b></th>
+                  <th><b>Blood Sugar</b></th>
+                  <th><b>Blood Pressure</b></th>
+                  <th><b>Status</b></th>
+              </tr>
+              <tr ng-repeat="item2 in vitalItems | orderBy:'-timestamp'" divider-collection-repeat>
+                  <td><p>{{item2.timestamp}}</p></td>
+                  <td><p>{{item2.BS}}</p></td>
+                  <td><p>{{item2.BP}}</p></td>
+                  <td><p ng-if="item2.status=='danger'"><b style="color:red;">{{item2.status.toUpperCase()}}</b></p>
+                  <p ng-if="item2.status=='safe'"><b>{{item2.status.toUpperCase()}}</b></p></td>
+              </tr> 
+      </table>       
     </ion-content>
       <!-- Tab 2 Content END -->
   </ion-tab>

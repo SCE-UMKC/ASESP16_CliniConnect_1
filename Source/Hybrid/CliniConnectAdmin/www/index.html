@@ -19,6 +19,17 @@
     <script src="lib/angularPrint/angularPrint.js"></script>
     <link href="lib/angularPrint/angularPrint.css" rel=stylesheet>
       
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("user_3ryU1pYgXup7f69TyTwGk");
+       })();
+    </script>
+      
+      
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="lib/angular-momentjs/angular-momentjs.js"></script>
+      
     <link rel='shortcut icon' type='image/x-icon' href='img/favicon.png' />
     
 
@@ -38,6 +49,25 @@
     <!-- Only required for Tab projects w/ pages in multiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
+      
+      <style>
+        table, th , td  {
+          border: 1px solid grey;
+          border-collapse: collapse;
+          padding: 5px;
+            align-self: center;
+        }
+        table tr:nth-child(odd)	{
+          background-color: #f1f1f1;
+        }
+        table tr:nth-child(even) {
+          background-color: #ffffff;
+        }
+          table.center {
+            margin-left:auto; 
+            margin-right:auto;
+          }
+      </style>
 
   </head> 
   <body ng-app="app" animation="slide-left-right-ios7">

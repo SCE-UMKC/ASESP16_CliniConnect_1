@@ -1,6 +1,6 @@
-angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 'ionic-timepicker', 'AngularPrint'])
+angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 'ionic-timepicker', 'AngularPrint', 'angular-momentjs'])
   
-.controller('homeCtrl', function($scope, $ionicFilterBar, $http, $ionicModal, ionicDatePicker) {
+.controller('homeCtrl', function($scope, $ionicFilterBar, $http, $ionicModal, ionicDatePicker, $moment) {
      $scope.shouldShowDelete = true;
      $scope.shouldShowReorder = true;
      $scope.listCanSwipe = true;
@@ -337,7 +337,11 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
             $http.get(link).then(function (response){
                     //$scope.status = $scope.giveResponse(response.data.status);
                 console.log(response.data);
-                    alert("Patient Registration Complete");
+                emailjs.send("gmail","template_X28egazR",
+                             {to_email: r.username,
+                              to_name: r.firstName + " " + r.lastName, 
+                              to_password: r.password});
+                alert("Patient Registration Complete");
 
 
             });
