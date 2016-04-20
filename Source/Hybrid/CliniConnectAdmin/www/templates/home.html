@@ -6,7 +6,7 @@
     ng-click="vm.showFilterBar()"></button>
         
     <ion-list>
-      <div ng-repeat="item in vm.items | orderBy:'date'" divider-collection-repeat>
+      <div ng-repeat="item in vm.items" divider-collection-repeat>
               <ion-item ng-click="vm.openModal(item.patient, item.date, item.dr, item.dob, item.username, item.password)">
                 <h2>Patient: <b>{{item.patient}}</b></h2>
                 <p>Appointment Date: <b>{{item.date}}</b></p>
@@ -57,7 +57,7 @@
                   <th><b>Blood Pressure</b></th>
                   <th><b>Status</b></th>
               </tr>
-              <tr ng-repeat="item2 in vitalItems | orderBy:'-timestamp'" divider-collection-repeat>
+              <tr ng-repeat="item2 in vitalItems" divider-collection-repeat>
                   <td><p>{{item2.timestamp}}</p></td>
                   <td><p>{{item2.BS}}</p></td>
                   <td><p>{{item2.BP}}</p></td>
@@ -77,7 +77,7 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>       
-          <ion-item ng-repeat="item3 in pForms | orderBy:'-timestamp'" 
+          <ion-item ng-repeat="item3 in pForms" 
                     ng-click="openModal2(item3.timestamp, date1, pats1, item3.drink, item3.smoke,
                               item3.surgeries, item3.meds, item3.tuberculosis, item3.diabetes, 
                               item3.cancer, item3.complaints, item3.allergies)">

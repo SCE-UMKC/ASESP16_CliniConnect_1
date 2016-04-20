@@ -119,6 +119,7 @@ public class LoginAuth extends HttpServlet {
 				info.put("username", loginInfo.get("username"));
 				info.put("name", loginInfo.get("name"));
 				info.put("date", loginInfo.get("date"));
+				info.put("dr", loginInfo.get("dr"));
 			}catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -143,6 +144,7 @@ public class LoginAuth extends HttpServlet {
 
 		    } 
 		});
+		
 		mongoClient.close();
 		
 	}

@@ -1,7 +1,9 @@
 package com.example.ase_group_1.health_app;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -10,7 +12,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     private String clinicAddress;
     private String clinicPhone;
     private String clinicEmail;
+    private String dr;
     TextView patNameText;
     TextView patDateText;
 
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         clinicAddress = getIntent().getStringExtra("address");
         clinicEmail = getIntent().getStringExtra("email");
         clinicPhone = getIntent().getStringExtra("phone");
-
+        dr = getIntent().getStringExtra("dr");
 
         patName = getIntent().getStringExtra("name");
         patNameText = (TextView)findViewById(R.id.patName);
@@ -68,8 +70,31 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                String[] info = {"Appt. For: " + patName,
+                                 "Appt. Date: " + patDate,
+                                 "Physician: " + dr,
+                                 "Address: " + clinicAddress,
+                                 "Phone: " + clinicPhone
+                                };
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Appointment Info")
+                        .setItems(info, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // The 'which' argument contains the index position
+                                // of the selected item
+                            }
+                        });
+
+                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //Your action here
+                    }
+                });
+                
+                alert.show();
+
             }
         });
 
@@ -238,5 +263,20 @@ public class MainActivity extends AppCompatActivity
             return false;
         }
         return true;
+    }
+
+    private void showInfoAlert(){
+
+        String[] info = {"Date", "Time", "Dr", "Visit"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Appointment Details")
+                .setItems(info, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                    }
+                });
+        builder.create();
     }
 }

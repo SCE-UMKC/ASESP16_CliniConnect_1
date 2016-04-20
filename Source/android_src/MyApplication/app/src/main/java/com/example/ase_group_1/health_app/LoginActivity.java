@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     String clinicPhone;
     String clinicAddress;
     String clinicName;
+    String dr;
 
 
     @Override
@@ -358,6 +359,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 clinicAddress = json.get("clinicAddress").toString();
                 clinicEmail = json.get("clinicEmail").toString();
                 clinicPhone = json.get("clinicPhone").toString();
+                dr = json.get("dr").toString();
                 if(success.equals("success")){
                     return true;
                 }
@@ -392,6 +394,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 redirect.putExtra("phone", clinicPhone);
                 redirect.putExtra("address", clinicAddress);
                 redirect.putExtra("email", clinicEmail);
+                redirect.putExtra("dr", dr);
                 LoginActivity.this.startActivity(redirect);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

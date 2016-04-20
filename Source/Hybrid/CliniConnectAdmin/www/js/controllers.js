@@ -21,15 +21,33 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                     patient: response.data.patients[i].name,
                     date: response.data.patients[i].date,
                     dr: response.data.patients[i].dr,
-                    dob: response.data.patients[i].dob,
+                    dob: $moment(response.data.patients[i].dob).format('MMMM Do, YYYY'),
                     username: response.data.patients[i].username,
                     password: response.data.patients[i].password
                 };
                 items.push(item);
             }
+            items.sort(sort_by("date", false));
+            for(var i = 0; i < items.length; i++){
+                items[i].date = $moment(items[i].date).format('MMMM Do YYYY, h:mm A')
+            }
+            
         });
 
     vm.items = items;
+    
+    var sort_by = function(field, reverse, primer){
+
+       var key = primer ? 
+           function(x) {return primer(x[field])} : 
+           function(x) {return x[field]};
+
+       reverse = !reverse ? 1 : -1;
+
+       return function (a, b) {
+           return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+         } 
+    }
     
     $scope.setVitals = function(dt){
         $scope.vitalItems = dt;
@@ -50,6 +68,12 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                     status: response.data.labs[i].status
                 };
                 vitalItems.push(item);
+            }
+            vitalItems.sort(sort_by("timestamp", true));
+
+            
+            for(var i = 0; i < vitalItems.length; i++){
+                vitalItems[i].timestamp = $moment(vitalItems[i].timestamp).format('MMMM Do YYYY, h:mm A');
             }
             console.log(vitalItems);
             $scope.vitalItems = vitalItems; 
@@ -89,6 +113,11 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                     
                 };
                 fItems.push(item);
+            }
+            fItems.sort(sort_by("timestamp", true));
+            
+            for(var i = 0; i < fItems.length; i++){
+                fItems[i].timestamp = $moment(fItems[i].timestamp).format('MMMM Do YYYY, h:mm A');
             }
            
             $scope.setForms(fItems);
@@ -313,7 +342,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
 
 })
       
-.controller('registerPatientCtrl', function($scope, $http) {
+.controller('registerPatientCtrl', function($scope, $http, $moment) {
     var r = this;
     r.updateDr = function(dr){
         r.dr = dr;
@@ -324,7 +353,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         if(r.firstName && r.lastName && r.dr && r.dob && r.username && r.password){
             
             var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/RegisterPatient?' 
-            + "date=" + "2016-11-07 12:30" + "&" 
+            + "date=" + $moment().utc().add(20, 'day') + "&" 
             + "name=" + r.firstName + " " + r.lastName + "&"
             + "dr=" + r.dr + "&"
             + "dob=" + r.dob + "&"
