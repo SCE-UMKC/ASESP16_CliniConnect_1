@@ -125,6 +125,49 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         });
     }
     
+    $scope.setSurvey = function(srv){
+        console.log("happy birthday");
+        
+        $scope.survey = srv;
+        console.log($scope.survey);
+    }
+    
+        
+    $scope.getSurveys = function(){
+        var fItems2 = [];
+        var link = 'http://localhost:8080/CliniConnectAdmin/GetPostVisitSurvey?'
+        + "username=" + $scope.username;
+        console.log(link);
+        
+        $http.get(link).then(function(response){
+            console.log(response.data);
+            
+            for(var i = 0; i < response.data.surveys.length; i++){
+                var item = {
+                    timestamp: response.data.surveys[i].timestamp,
+                    q1: response.data.surveys[i].q1,
+                    q2: response.data.surveys[i].q2,
+                    q3: response.data.surveys[i].q3,
+                    q4: response.data.surveys[i].q4,
+                    q5: response.data.surveys[i].q5,
+                    q6: response.data.surveys[i].q6,
+                    q7: response.data.surveys[i].q7,
+                    q8: response.data.surveys[i].q8
+                    
+                };
+                fItems2.push(item);
+            }
+            fItems2.sort(sort_by("timestamp", true));
+            
+            for(var i = 0; i < fItems2.length; i++){
+                fItems2[i].timestamp = $moment(fItems2[i].timestamp).format('MMMM Do YYYY, h:mm A');
+            }
+           
+            $scope.setSurvey(fItems2);
+            
+        });
+    }
+    
 
     
     
@@ -166,6 +209,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
       
       $scope.getVitalItems();
       $scope.getForms();
+      $scope.getSurveys();
   }
 
   vm.closeModal = function() {
@@ -328,6 +372,32 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
   };
   $scope.closeModal2 = function() {
     $scope.modal2.hide();
+  };
+    
+  $ionicModal.fromTemplateUrl('my-modal2.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
+  $scope.openModal3 = function(tStamp, aDate, pName, q1, q2, q3, q4, q5, q6, q7, q8) {
+      $scope.pName2 = pName;
+      $scope.tStamp2 = tStamp;
+      $scope.aDate2 = aDate;
+      $scope.q1 = q1;
+      $scope.q2 = q2;
+      $scope.q3 = q3;
+      $scope.q4 = q4;
+      $scope.q5 = q5;
+      $scope.q6 = q6;
+      $scope.q7 = q7;
+      $scope.q8 = q8;
+
+
+    $scope.modal3.show();
+  };
+  $scope.closeModal3 = function() {
+    $scope.modal3.hide();
   };
     
     return vm;  
