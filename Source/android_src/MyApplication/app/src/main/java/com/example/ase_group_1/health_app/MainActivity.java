@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(mapIntent);
 
         } else if (id == R.id.nav_log) {
-            Intent log_intent = new Intent(this, BPLog.class);
+            Intent log_intent = new Intent(this, DailyVitalLog.class);
             log_intent.putExtra("username", mEmail);
             startActivity(log_intent);
 
@@ -197,7 +197,14 @@ public class MainActivity extends AppCompatActivity
             clinical_test.putExtra("username",mEmail);
             startActivity(clinical_test);
 
-        } else if (id == R.id.nav_info) {
+        } else if (id == R.id.nav_postvisit) {
+
+            Intent clinical_test = new Intent(this, PostVisitForm.class);
+            clinical_test.putExtra("username", mEmail);
+            startActivity(clinical_test);
+
+        }else if (id == R.id.nav_info) {
+
             Intent info_intent = new Intent(this, ClinicInfo.class);
             startActivity(info_intent);
 

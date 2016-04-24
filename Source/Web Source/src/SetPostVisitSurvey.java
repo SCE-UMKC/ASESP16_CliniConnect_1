@@ -2,6 +2,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,10 +44,13 @@ public class SetPostVisitSurvey extends HttpServlet {
 		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinic_db");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateTimeStamp = dateFormat.format(date); //2014/08/06 15:59:48
 		
 		db.getCollection("follow_up_survey").insertOne(new Document()
 				.append("username", request.getParameter("username"))
-				.append("timestamp", request.getParameter("timestamp"))
+				.append("timestamp", dateTimeStamp)
 				.append("q1", request.getParameter("q1"))
 				.append("q2", request.getParameter("q2"))
 				.append("q3", request.getParameter("q3"))
@@ -52,7 +58,9 @@ public class SetPostVisitSurvey extends HttpServlet {
 				.append("q5", request.getParameter("q5"))
 				.append("q6", request.getParameter("q6"))
 				.append("q7", request.getParameter("q7"))
-				.append("q8", request.getParameter("q8")));
+				.append("q8", request.getParameter("q8"))
+				.append("q9", request.getParameter("q9"))
+				.append("q10", request.getParameter("q10")));
 		
 		JSONObject info = new JSONObject();
 		try {

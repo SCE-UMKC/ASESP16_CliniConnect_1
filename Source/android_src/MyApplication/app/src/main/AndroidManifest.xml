@@ -65,6 +65,15 @@
             android:name=".VisitForm"
             android:label="Visit Forms"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".PostVisitForm"
+            android:label="Post Visit Survey"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".DailyVitalLog"
+            android:label="Daily Vitals Log"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
 
 
 

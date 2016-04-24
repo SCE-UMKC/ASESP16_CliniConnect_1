@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_assignment_black_24dp"
             android:title="Pre-Visit Forms" />
         <item
+            android:id="@+id/nav_postvisit"
+            android:icon="@drawable/ic_done_black_24dp"
+            android:title="Post-Visit Survey" />
+        <item
             android:id="@+id/nav_log"
             android:icon="@drawable/ic_chat_black_24dp"
             android:title="Daily Vitals Log" />

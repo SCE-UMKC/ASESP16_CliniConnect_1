@@ -56,6 +56,8 @@
                   <th><b>Blood Sugar</b></th>
                   <th><b>Blood Pressure</b></th>
                   <th><b>Status</b></th>
+                  <th><b>Temperature</b></th>
+                  <th><b>Well Being</b></th>
               </tr>
               <tr ng-repeat="item2 in vitalItems" divider-collection-repeat>
                   <td><p>{{item2.timestamp}}</p></td>
@@ -63,6 +65,8 @@
                   <td><p>{{item2.BP}}</p></td>
                   <td><p ng-if="item2.status=='danger'"><b style="color:red;">{{item2.status.toUpperCase()}}</b></p>
                   <p ng-if="item2.status=='safe'"><b>{{item2.status.toUpperCase()}}</b></p></td>
+                  <td><p>{{item2.TEMP}} °F</p></td>
+                  <td><p>{{item2.FEELING}}</p></td>
               </tr> 
       </table>       
     </ion-content>
@@ -100,7 +104,7 @@
       <ion-list>       
           <ion-item ng-repeat="item4 in survey" 
                     ng-click="openModal3(item4.timestamp, date1, pats1, item4.q1,
-                              item4.q2,item4.q3,item4.q4,item4.q5,item4.q6,item4.q7,item4.q8)">
+                              item4.q2,item4.q3,item4.q4,item4.q5,item4.q6,item4.q7,item4.q8, item4.q9, item4.q10)">
               <h2>Date Submitted: <b>{{item4.timestamp}}</b></h2>
               <p>Appointment Date: <b>{{date1}}</b></p>
               <p>Patient: <b>{{pats1}}</b></p>
@@ -332,43 +336,53 @@
         </ion-item> 
 
          <ion-item>
-             <h2>Q1:</h2>
+             <h2>1. How likely is it that you would recommend your Doctor to a friend or family member?</h2>
              <p><b>{{q1}}</b></p>             
          </ion-item>
 
          <ion-item>
-             <h2>Q2:</h2>
+             <h2>2. Overall, how satisfied or dissatisfied were you with your last visit to our office?</h2>
              <p><b>{{q2}}</b></p>            
          </ion-item>
          
          <ion-item>
-             <h2>Q3:</h2>
+             <h2>3. How easy or difficult was it to schedule your appointment at a time that was convenient for you?</h2>
              <p><b>{{q3}}</b></p>            
          </ion-item>
 
          <ion-item>
-             <h2>Q4:</h2>
+             <h2>4. How convenient was the appointment time you were able to get?</h2>
              <p><b>{{q4}}</b></p>
          </ion-item>
          
         <ion-item>
-             <h2>Q5:</h2>
+             <h2>5. In your opinion, how convenient is the location of our office?</h2>
              <p><b>{{q5}}</b></p>
          </ion-item>
          
         <ion-item>
-             <h2>Q6:</h2>
+             <h2>6. Overall, how would your rate the service you received from the staff at our office?</h2>
              <p><b>{{q6}}</b></p>
          </ion-item>
          
         <ion-item>
-             <h2>Q7:</h2>
+             <h2>7. Overall, how would you rate the care you received from your Doctor?</h2>
              <p><b>{{q7}}</b></p>
          </ion-item>
          
         <ion-item>
-             <h2>Q8:</h2>
+             <h2>8. How well did your Doctor explain your treatment option?</h2>
              <p><b>{{q8}}</b></p>
+         </ion-item>
+         
+        <ion-item>
+             <h2>9. Is there anything we could have done to improve your last visit?</h2>
+             <p><b>{{q9}}</b></p>
+         </ion-item>
+         
+        <ion-item>
+             <h2>10. How well did your Doctor explain your follow-up care?</h2>
+             <p><b>{{q10}}</b></p>
          </ion-item>
 
 

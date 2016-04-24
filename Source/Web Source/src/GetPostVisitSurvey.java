@@ -102,6 +102,8 @@ public class GetPostVisitSurvey extends HttpServlet {
 			jo.put("q6", document.get("q6"));
 			jo.put("q7", document.get("q7"));
 			jo.put("q8", document.get("q8"));
+			jo.put("q9", document.get("q9"));
+			jo.put("q10", document.get("q10"));
 			jo.put("timestamp", document.get("timestamp"));
 			jArr.put(jo);
 		} catch (JSONException e) {

@@ -40,7 +40,9 @@ public class VitalsLog extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String BP = request.getParameter("BP");
-		String BS = request.getParameter("BS");		
+		String BS = request.getParameter("BS");
+		String TEMP = request.getParameter("TEMP");
+		String FEELING = request.getParameter("FEELING");
 		JSONObject info = new JSONObject();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -70,6 +72,8 @@ public class VitalsLog extends HttpServlet {
 					.append("username", request.getParameter("username"))
 					.append("BP", request.getParameter("BP"))
 					.append("BS", request.getParameter("BS"))
+					.append("TEMP", request.getParameter("TEMP"))
+					.append("FEELING", request.getParameter("FEELING"))
 					.append("timestamp", dateTimeStamp)
 					.append("status", "danger"));
 		}else{
@@ -77,6 +81,8 @@ public class VitalsLog extends HttpServlet {
 					.append("username", request.getParameter("username"))
 					.append("BP", request.getParameter("BP"))
 					.append("BS", request.getParameter("BS"))
+					.append("TEMP", request.getParameter("TEMP"))
+					.append("FEELING", request.getParameter("FEELING"))
 					.append("timestamp", dateTimeStamp)
 					.append("status", "safe"));
 			

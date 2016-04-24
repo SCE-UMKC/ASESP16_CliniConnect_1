@@ -95,6 +95,8 @@ public class GetVitalsLog extends HttpServlet {
 		try {
 			jo.put("BP", document.get("BP"));
 			jo.put("BS", document.get("BS"));
+			jo.put("TEMP", document.get("TEMP"));
+			jo.put("FEELING", document.get("FEELING"));
 			jo.put("status", document.get("status"));
 			jo.put("timestamp", document.get("timestamp"));
 		} catch (JSONException e) {

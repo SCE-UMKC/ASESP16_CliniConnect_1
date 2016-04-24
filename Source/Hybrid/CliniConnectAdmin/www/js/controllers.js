@@ -64,6 +64,8 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                 var item = {
                     BP: response.data.labs[i].BP,
                     BS: response.data.labs[i].BS,
+                    TEMP: response.data.labs[i].TEMP,
+                    FEELING: response.data.labs[i].FEELING,
                     timestamp: response.data.labs[i].timestamp,
                     status: response.data.labs[i].status
                 };
@@ -135,7 +137,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         
     $scope.getSurveys = function(){
         var fItems2 = [];
-        var link = 'http://localhost:8080/CliniConnectAdmin/GetPostVisitSurvey?'
+        var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetPostVisitSurvey?'
         + "username=" + $scope.username;
         console.log(link);
         
@@ -152,7 +154,9 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                     q5: response.data.surveys[i].q5,
                     q6: response.data.surveys[i].q6,
                     q7: response.data.surveys[i].q7,
-                    q8: response.data.surveys[i].q8
+                    q8: response.data.surveys[i].q8,
+                    q9: response.data.surveys[i].q9,
+                    q10: response.data.surveys[i].q10
                     
                 };
                 fItems2.push(item);
@@ -380,7 +384,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
   }).then(function(modal) {
     $scope.modal3 = modal;
   });
-  $scope.openModal3 = function(tStamp, aDate, pName, q1, q2, q3, q4, q5, q6, q7, q8) {
+  $scope.openModal3 = function(tStamp, aDate, pName, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) {
       $scope.pName2 = pName;
       $scope.tStamp2 = tStamp;
       $scope.aDate2 = aDate;
@@ -392,6 +396,8 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
       $scope.q6 = q6;
       $scope.q7 = q7;
       $scope.q8 = q8;
+      $scope.q9 = q9;
+      $scope.q10 = q10;
 
 
     $scope.modal3.show();
