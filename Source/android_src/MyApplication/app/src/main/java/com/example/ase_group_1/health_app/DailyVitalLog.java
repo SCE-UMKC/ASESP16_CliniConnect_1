@@ -1,7 +1,6 @@
 package com.example.ase_group_1.health_app;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -185,9 +184,9 @@ public class DailyVitalLog extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-                Intent redirect = new Intent(DailyVitalLog.this, MainActivity.class);
-                redirect.putExtra("username", mEmail.toString());
-                DailyVitalLog.this.startActivity(redirect);
+//                Intent redirect = new Intent(DailyVitalLog.this, MainActivity.class);
+//                redirect.putExtra("username", mEmail.toString());
+//                DailyVitalLog.this.startActivity(redirect);
             } else {
 
             }

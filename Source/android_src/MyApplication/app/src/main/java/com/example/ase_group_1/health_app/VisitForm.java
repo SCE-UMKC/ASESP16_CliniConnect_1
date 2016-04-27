@@ -5,7 +5,6 @@ package com.example.ase_group_1.health_app;
  */
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -205,9 +204,9 @@ public class VisitForm extends FormWithAppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-                Intent redirect = new Intent(VisitForm.this, MainActivity.class);
-                redirect.putExtra("username", mEmail);
-                VisitForm.this.startActivity(redirect);
+//                Intent redirect = new Intent(VisitForm.this, MainActivity.class);
+//                redirect.putExtra("username", mEmail);
+//                VisitForm.this.startActivity(redirect);
             } else {
                 Context context = getApplicationContext();
                 CharSequence text = "Error Submitting Form, Try Again Later.";

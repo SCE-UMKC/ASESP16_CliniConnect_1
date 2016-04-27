@@ -429,7 +429,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         if(r.firstName && r.lastName && r.dr && r.dob && r.username && r.password){
             
             var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/RegisterPatient?' 
-            + "date=" + $moment().utc().add(20, 'day') + "&" 
+            + "date=" + "2016-05-09"+ "&" 
             + "name=" + r.firstName + " " + r.lastName + "&"
             + "dr=" + r.dr + "&"
             + "dob=" + r.dob + "&"
