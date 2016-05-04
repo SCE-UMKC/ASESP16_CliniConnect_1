@@ -2,7 +2,7 @@
 
 ---
 
-### An original application developed for: Advanced Software Engineering SP2016 Project
+### An original application developed for: Advanced Software Engineering SP2016 Project - UMKC
 ---
 
 ###Team Members (Group 1): 
@@ -38,4 +38,7 @@ CliniConnect is a communication tool to help Patients connect easier with their 
 * Send a patient a push notification appointment reminder
 * Send a patient a new lab order with QR code
 * Register new information about the clinic that controls the: navigate to, call or email the clinic information in the android application
+
+---
+###What Does CliniConnect look like?
 
