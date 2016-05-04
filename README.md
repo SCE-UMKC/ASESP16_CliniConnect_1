@@ -40,5 +40,22 @@ CliniConnect is a communication tool to help Patients connect easier with their 
 * Register new information about the clinic that controls the: navigate to, call or email the clinic information in the android application
 
 ---
-###What Does CliniConnect look like?
+###What do a few features from CliniConnect look like?
+**Admin Web App**
+*Find your patient*
 ![admin home 1 1](https://cloud.githubusercontent.com/assets/11081968/15002946/37e0f8f2-116c-11e6-9d3f-43aa1df79cfd.PNG)
+*View Patient Info and more*
+![admin pat details](https://cloud.githubusercontent.com/assets/11081968/15002986/b0463a32-116c-11e6-8129-ed87745c37c6.PNG)
+*Send Patient A Lab Order*
+![admin send labs](https://cloud.githubusercontent.com/assets/11081968/15002997/cb84845c-116c-11e6-9760-6397e79cd508.PNG)
+**Patient Android App**
+*Navigation*
+![mobile nav panel](https://cloud.githubusercontent.com/assets/11081968/15003007/e0538c34-116c-11e6-9460-604299cf469c.png)
+*Receive Lab Forms*
+![mobile lab form qr](https://cloud.githubusercontent.com/assets/11081968/15003024/074acbd6-116d-11e6-9646-d52818347c1e.png)
+---
+
+###Where can I get more information?
+**Video Demo:** 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/5t4kIitnlH0/0.jpg)](http://www.youtube.com/watch?v=5t4kIitnlH0)
+
