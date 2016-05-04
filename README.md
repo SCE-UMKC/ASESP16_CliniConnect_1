@@ -68,6 +68,8 @@ CliniConnect is a communication tool to help Patients connect easier with their 
 ---
 
 ###Where can I get more information?
+
 **Video Demo:** 
+
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/5t4kIitnlH0/0.jpg)](http://www.youtube.com/watch?v=5t4kIitnlH0)
 
