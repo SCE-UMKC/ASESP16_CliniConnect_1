@@ -79,7 +79,7 @@ public class SendMessage2 extends HttpServlet {
 	
 	void verifyLogin(){
 		
-		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds019698.mlab.com:19698/clinicdb");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinicdb");
 		
@@ -108,7 +108,7 @@ public class SendMessage2 extends HttpServlet {
 			System.out.println(loginInfo);
 			System.out.println(request2.getParameter("username"));
 			isVerified = true;
-			String apiKey = "AIzaSyD5T5ouxL80ESZIRBfVmNiKob1Cwt3biIc";
+			String apiKey = "<TODO INSERT GCM API KEY HERE>";
 			int numOfRetries = 3;
 			Sender sender = new Sender(apiKey);
 			Message message = new Message.Builder()

@@ -46,31 +46,6 @@ public class SendPushNotification extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		doPost(request, response);
-//		JSONObject info = new JSONObject();
-//		
-//		verifyLogin();
-//		try{
-//			if(isVerified){
-//				//response.getWriter().append("Served Success at: ").append(request.getContextPath());
-//				info.put("login", "success");
-//			}
-//			else{
-//				//response.getWriter().append("Served fail at: ").append(request.getContextPath());
-//				info.put("login", "failure");
-//			}
-//		}catch (JSONException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	    response.setHeader("Access-Control-Allow-Origin", "*");
-//	    response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-//	    response.setHeader("Access-Control-Max-Age", "3600");
-//	    response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-//		
-//		response.setContentType("application/json");     
-//		PrintWriter out = response.getWriter();  
-//		out.print(info);
-//		out.flush();
 	}
 
 	/**
@@ -111,7 +86,7 @@ public class SendPushNotification extends HttpServlet {
 	
 	void verifyLogin(){
 		
-		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinic_db");
 		
@@ -140,7 +115,7 @@ public class SendPushNotification extends HttpServlet {
 			System.out.println(loginInfo);
 			System.out.println(request2.getParameter("username"));
 			isVerified = true;
-			String apiKey = "AIzaSyD5T5ouxL80ESZIRBfVmNiKob1Cwt3biIc";
+			String apiKey = "<INSERT GCM API KEY HERE>";
 			int numOfRetries = 3;
 			Sender sender = new Sender(apiKey);
 			Message message = new Message.Builder()

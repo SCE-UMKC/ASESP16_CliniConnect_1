@@ -7,7 +7,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     $scope.labSelect = "";
      
     
-    var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetPatientsTable';
+    var link = '< TODO add_url_here >';
     
 
         var vm = this,
@@ -55,7 +55,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     
     $scope.getVitalItems = function(){
         var vitalItems = [];
-        var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetVitalsLog?'
+        var link = '< TODO add_url_here >'
         + "username=" + $scope.username;
         console.log(link); 
         $http.get(link).then(function(response){
@@ -91,7 +91,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     
     $scope.getForms = function(){
         var fItems = [];
-        var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetVisitForm?'
+        var link = '< TODO add_url_here >'
         + "username=" + $scope.username;
         console.log(link);
         
@@ -137,7 +137,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         
     $scope.getSurveys = function(){
         var fItems2 = [];
-        var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetPostVisitSurvey?'
+        var link = '< TODO add_url_here >'
         + "username=" + $scope.username;
         console.log(link);
         
@@ -294,7 +294,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         
         if($scope.username && $scope.timeP != "Select Time" && $scope.dateP != "Select Date" && $scope.pats1){
             
-            var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/SendPushNotification?'
+            var link = '< TODO add_url_here >'
             + "username=" + $scope.username + "&"
             + "time=" + $scope.timeP + "&"
             + "message=" + $scope.dateP + "&"
@@ -329,7 +329,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     
     $scope.sendLab = function(){
         if($scope.pats1 && $scope.dr1 && $scope.location && $scope.labTest && $scope.sInst && $scope.username){
-            var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/rxSubmit?'
+            var link = '< TODO add_url_here >'
             + "patientName=" + $scope.pats1 + "&"
             + "physicianName=" + $scope.dr1 + "&"
             + "physicianClinicName=" + $scope.location + "&"
@@ -428,7 +428,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
         
         if(r.firstName && r.lastName && r.dr && r.dob && r.username && r.password){
             
-            var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/RegisterPatient?' 
+            var link = '< TODO add_url_here >' 
             + "date=" + "2016-05-09"+ "&" 
             + "name=" + r.firstName + " " + r.lastName + "&"
             + "dr=" + r.dr + "&"
@@ -465,7 +465,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
     
         $scope.getInfo = function(){
     
-            $http.get('http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetClinicInformation').then(function(response){
+            $http.get('< TODO add_url_here >').then(function(response){
                 $scope.clinicAddress = response.data.clinicAddress;
                 $scope.clinicPhone = response.data.clinicPhone;
                 $scope.clinicName = response.data.clinicName;
@@ -486,7 +486,7 @@ angular.module('app.controllers', ['jett.ionic.filter.bar', 'ionic-datepicker', 
                 console.log(c.clinicAddress);
                 console.log(c.clinicEmail);
                 console.log(c.clinicHours);
-                var link = 'http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/SetClinicInformation?' 
+                var link = '< TODO add_url_here >' 
                 + "clinicAddress=" + c.clinicAddress + "&" 
                 + "clinicName=" + c.clinicName + "&"
                 + "clinicPhone=" + c.clinicPhone + "&"

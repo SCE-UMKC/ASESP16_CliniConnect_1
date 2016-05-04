@@ -334,7 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             args.add(new BasicNameValuePair("password",mPassword));
 
 
-            String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/LoginAuth";
+            String url_login_user = "< TODO add_url_here >";
 
             JSONObject json;
             // getting JSON Object

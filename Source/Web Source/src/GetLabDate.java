@@ -46,7 +46,7 @@ public class GetLabDate extends HttpServlet {
 		
 		info = new JSONObject();
 		jArr = new JSONArray();
-		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinic_db");
 		

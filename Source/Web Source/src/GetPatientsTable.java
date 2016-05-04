@@ -43,7 +43,7 @@ public class GetPatientsTable extends HttpServlet {
 		// TODO Auto-generated method stub
 		info = new JSONObject();
 		jArr = new JSONArray();
-		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds023388.mlab.com:23388/clinic_db");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinic_db");
 		

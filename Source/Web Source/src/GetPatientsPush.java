@@ -45,7 +45,7 @@ public class GetPatientsPush extends HttpServlet {
 		
 		
 		
-		MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds019698.mlab.com:19698/clinicdb");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase db = mongoClient.getDatabase("clinicdb");
 		

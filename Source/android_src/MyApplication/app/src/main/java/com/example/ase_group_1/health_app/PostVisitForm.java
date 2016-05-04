@@ -151,7 +151,7 @@ public class PostVisitForm extends FormWithAppCompatActivity {
             }
             Log.d("thee array", lStr.toString());
             args.add(new BasicNameValuePair("objects", lStr.toString()));
-            String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/SetPostVisitSurvey";
+            String url_login_user = "< TODO add_url_here >";
             //String url_login_user = "192.168.1.15:8080/CliniConnectAdmin/VisitForm";
 
             JSONObject json;

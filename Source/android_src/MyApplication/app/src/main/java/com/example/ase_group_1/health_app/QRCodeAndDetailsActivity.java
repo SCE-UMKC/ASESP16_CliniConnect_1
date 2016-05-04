@@ -92,7 +92,7 @@ public class QRCodeAndDetailsActivity extends AppCompatActivity {
             args.add(new BasicNameValuePair("date", mDate));
 
 
-            String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/GetLab";
+            String url_login_user = "< TODO add_url_here >";
 
 
             // getting JSON Object

@@ -89,7 +89,7 @@ public class rxSubmit extends HttpServlet {
 
 		clinicalTestRow.put("dateTimeStamp",dateTimeStamp);		
 		
-		MongoClientURI uri = new MongoClientURI("mongodb://shweta:shweta@ds023388.mlab.com:23388/clinic_db");
+		MongoClientURI uri = new MongoClientURI("< TODO add_url_here >");
 		MongoClient client = new MongoClient(uri);
 
 		DB db = client.getDB(uri.getDatabase());

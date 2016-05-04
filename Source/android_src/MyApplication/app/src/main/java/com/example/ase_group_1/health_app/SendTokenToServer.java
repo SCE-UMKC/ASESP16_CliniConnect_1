@@ -33,7 +33,7 @@ public class SendTokenToServer extends AsyncTask<Void, Void, Boolean> {
         args.add(new BasicNameValuePair("username", email));
 
 
-        String url_login_user = "http://ec2-52-91-251-221.compute-1.amazonaws.com:8080/CliniConnectAdmin4/SubmitToken";
+        String url_login_user = "< TODO add_url_here >";
         Log.d("IN SEND TOKEN", token);
 
         JSONObject json;
