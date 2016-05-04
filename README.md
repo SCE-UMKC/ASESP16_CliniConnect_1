@@ -41,4 +41,4 @@ CliniConnect is a communication tool to help Patients connect easier with their 
 
 ---
 ###What Does CliniConnect look like?
-
+![admin home 1 1](https://cloud.githubusercontent.com/assets/11081968/15002946/37e0f8f2-116c-11e6-9d3f-43aa1df79cfd.PNG)
