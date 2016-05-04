@@ -13,24 +13,24 @@
 
 ---
 ###What is CliniConnect?
-CliniConnect is a communication tool to help Patients connect easier with their clinic. The application includes an Administration Web App developed in Angular/Ionic as well as a Client App built using Java/Android Studio.
+CliniConnect is a communication tool to help Patients connect easier with their clinic. The application includes an Administration Web App developed in Angular/Ionic as well as a Client App built using Java/Android Studio. The application targets at-risk patients typically in low income areas who face challenges connecting with their Clinic.
 
 ---
 ###What are the features of CliniConnect?
-Patients can use the CliniConnect Android application to:
+**Patients can use the CliniConnect Android application to:**
 * Receive turn-by turn directions to the clinic
 * Call or email the clinic without having to enter an email or dial a number
 * Fill out Pre-Visit paperwork
 * Send vital information including:
-** Blood pressure
-** Blood sugar
-** Temperature
-** Description of current state of wellness
+  * Blood pressure
+  * Blood sugar
+  * Temperature
+  * Description of current state of wellness
 * Complete Post-Visit surveys
 * Receive lab work orders with QR code
 * Receive appointment reminder push notifications sent to their phone
 
-Clinic administrators can use the CliniConnect web application to:
+**Clinic administrators can use the CliniConnect web application to:**
 * Register a new patient into the system
 * View all patients using the android application
 * View the daily vitals log for a patient
